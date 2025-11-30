@@ -1,0 +1,15 @@
+pandas
+ollama
+tqdm
+llama-index-core
+llama-index-embeddings-ollama
+llama-index-llms-ollama
+llama-index-vector-stores-chroma
+chromadb
+pypdf
+nbimport
+transformers
+scikit-learn
+torch
+torchvision
+torchaudio
