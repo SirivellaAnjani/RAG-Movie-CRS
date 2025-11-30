@@ -1,0 +1,141 @@
+audience_context_queries = [
+    # ========================================
+    # 1. SOLO → YOUNG CHILD
+    # ========================================
+    {
+        'id': 'aud_01',
+        'baseline_query': "I like violent action movies",
+        'shifted_query': "I'm watching with my 6-year-old daughter, need something appropriate",
+        'expected_shift': 'violent → kid-friendly',
+        'context_marker': '6-year-old / appropriate',
+        'baseline_expected': ['violent', 'action', 'intense', 'mature'],
+        'shifted_expected': ['kid-friendly', 'children', 'family', 'appropriate', 'G-rated'],
+        'shifted_unexpected': ['violent', 'mature', 'R-rated', 'graphic', 'scary']
+    },
+    
+    # ========================================
+    # 2. SOLO → DATE NIGHT
+    # ========================================
+    {
+        'id': 'aud_02',
+        'baseline_query': "I enjoy dark psychological thrillers",
+        'shifted_query': "It's date night with my partner, want something romantic",
+        'expected_shift': 'dark thriller → romantic',
+        'context_marker': 'date night / partner',
+        'baseline_expected': ['thriller', 'dark', 'psychological', 'intense'],
+        'shifted_expected': ['romantic', 'romance', 'love', 'date night', 'couples'],
+        'shifted_unexpected': ['dark', 'thriller', 'disturbing', 'violent']
+    },
+    
+    # ========================================
+    # 3. SOLO → ELDERLY PARENTS
+    # ========================================
+    {
+        'id': 'aud_03',
+        'baseline_query': "I like modern experimental films",
+        'shifted_query': "Watching with my elderly parents, need something classic and accessible",
+        'expected_shift': 'experimental → classic',
+        'context_marker': 'elderly parents / classic / accessible',
+        'baseline_expected': ['experimental', 'modern', 'avant-garde', 'unconventional'],
+        'shifted_expected': ['classic', 'traditional', 'accessible', 'mainstream', 'timeless'],
+        'shifted_unexpected': ['experimental', 'weird', 'confusing', 'avant-garde']
+    },
+    
+    # ========================================
+    # 4. SOLO → TEENAGE KIDS
+    # ========================================
+    {
+        'id': 'aud_04',
+        'baseline_query': "I watch heavy art house cinema",
+        'shifted_query': "Movie night with my teenage kids, need something they'll enjoy too",
+        'expected_shift': 'art house → teen-friendly',
+        'context_marker': 'teenage kids / enjoy',
+        'baseline_expected': ['art house', 'arthouse', 'heavy', 'slow'],
+        'shifted_expected': ['teen', 'young adult', 'fun', 'engaging', 'popular'],
+        'shifted_unexpected': ['art house', 'slow', 'boring', 'heavy']
+    },
+    
+    # ========================================
+    # 5. SOLO → FRIENDS GROUP
+    # ========================================
+    {
+        'id': 'aud_05',
+        'baseline_query': "I appreciate slow foreign films",
+        'shifted_query': "Having a movie night with friends, need crowd-pleasers",
+        'expected_shift': 'slow foreign → crowd-pleaser',
+        'context_marker': 'friends / crowd-pleasers',
+        'baseline_expected': ['foreign', 'slow', 'subtitled', 'arthouse'],
+        'shifted_expected': ['crowd-pleaser', 'popular', 'entertaining', 'fun', 'mainstream'],
+        'shifted_unexpected': ['foreign', 'slow', 'subtitled', 'boring']
+    },
+    
+    # ========================================
+    # 6. SOLO → GRANDPARENTS
+    # ========================================
+    {
+        'id': 'aud_06',
+        'baseline_query': "I'm into gritty crime dramas",
+        'shifted_query': "My grandparents are visiting, want something wholesome for all ages",
+        'expected_shift': 'gritty → wholesome',
+        'context_marker': 'grandparents / wholesome / all ages',
+        'baseline_expected': ['gritty', 'crime', 'dark', 'violent'],
+        'shifted_expected': ['wholesome', 'family-friendly', 'all ages', 'clean', 'uplifting'],
+        'shifted_unexpected': ['gritty', 'crime', 'violent', 'dark', 'mature']
+    },
+    
+    # ========================================
+    # 7. SOLO → RELIGIOUS FAMILY
+    # ========================================
+    {
+        'id': 'aud_07',
+        'baseline_query': "I watch edgy R-rated comedies",
+        'shifted_query': "Watching with my religious in-laws, need something clean and inoffensive",
+        'expected_shift': 'edgy → clean',
+        'context_marker': 'religious / clean / inoffensive',
+        'baseline_expected': ['edgy', 'R-rated', 'raunchy', 'crude'],
+        'shifted_expected': ['clean', 'inoffensive', 'wholesome', 'family-friendly', 'appropriate'],
+        'shifted_unexpected': ['edgy', 'R-rated', 'crude', 'offensive', 'raunchy']
+    },
+    
+    # ========================================
+    # 8. SOLO → FIRST DATE
+    # ========================================
+    {
+        'id': 'aud_08',
+        'baseline_query': "I love controversial films",
+        'shifted_query': "First date tonight, want something safe and universally appealing",
+        'expected_shift': 'controversial → safe',
+        'context_marker': 'first date / safe / universally appealing',
+        'baseline_expected': ['controversial', 'provocative', 'divisive', 'challenging'],
+        'shifted_expected': ['safe', 'universally appealing', 'mainstream', 'popular', 'accessible'],
+        'shifted_unexpected': ['controversial', 'provocative', 'divisive', 'awkward']
+    },
+    
+    # ========================================
+    # 9. SOLO → BOOK CLUB
+    # ========================================
+    {
+        'id': 'aud_09',
+        'baseline_query': "I prefer action blockbusters",
+        'shifted_query': "Hosting my book club, want something thought-provoking we can discuss",
+        'expected_shift': 'action → thought-provoking',
+        'context_marker': 'book club / thought-provoking / discuss',
+        'baseline_expected': ['action', 'blockbuster', 'explosive', 'fast-paced'],
+        'shifted_expected': ['thought-provoking', 'discussion', 'intellectual', 'meaningful', 'deep'],
+        'shifted_unexpected': ['action', 'blockbuster', 'mindless', 'explosive']
+    },
+    
+    # ========================================
+    # 10. SOLO → INTERNATIONAL GUESTS
+    # ========================================
+    {
+        'id': 'aud_10',
+        'baseline_query': "I watch American sports dramas",
+        'shifted_query': "Hosting international guests unfamiliar with American culture, need something universal",
+        'expected_shift': 'American-specific → universal',
+        'context_marker': 'international / unfamiliar / universal',
+        'baseline_expected': ['American', 'sports', 'cultural', 'specific'],
+        'shifted_expected': ['universal', 'international', 'cross-cultural', 'accessible', 'global'],
+        'shifted_unexpected': ['American', 'sports', 'cultural', 'niche']
+    },
+]

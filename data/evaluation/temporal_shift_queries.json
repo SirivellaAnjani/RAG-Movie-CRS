@@ -1,0 +1,310 @@
+# ========================================
+# 1. Temporal Shift
+# ========================================
+
+temporal_shift_queries = [
+    # ========================================
+    # 1. GENRE SHIFT (Horror → Romance)
+    # ========================================
+    {
+        'id': 'temp_01',
+        'baseline_query': "I like horror movies",
+        'shifted_query': "I like horror movies but want something romantic today",
+        'expected_shift': 'horror → romantic',
+        'temporal_marker': 'today',
+        'baseline_expected': ['horror', 'scary', 'frightening', 'thriller'],
+        'shifted_expected': ['romantic', 'romance', 'love story', 'love'],
+        'shifted_unexpected': ['horror', 'scary', 'frightening', 'thriller']
+    },
+    
+    # ========================================
+    # 2. INTENSITY SHIFT (Action → Calm)
+    # ========================================
+    {
+        'id': 'temp_02',
+        'baseline_query': "I enjoy intense action films",
+        'shifted_query': "I enjoy intense action films but need something calm right now",
+        'expected_shift': 'intense action → calm',
+        'temporal_marker': 'right now',
+        'baseline_expected': ['action', 'intense', 'explosive', 'adrenaline'],
+        'shifted_expected': ['calm', 'peaceful', 'quiet', 'gentle', 'slow'],
+        'shifted_unexpected': ['action', 'intense', 'explosive', 'fast-paced']
+    },
+    
+    # ========================================
+    # 3. TONE SHIFT (Dark → Uplifting)
+    # ========================================
+    {
+        'id': 'temp_03',
+        'baseline_query': "I love dark psychological dramas",
+        'shifted_query': "I love dark psychological dramas but want something uplifting tonight",
+        'expected_shift': 'dark → uplifting',
+        'temporal_marker': 'tonight',
+        'baseline_expected': ['dark', 'psychological', 'heavy', 'serious'],
+        'shifted_expected': ['uplifting', 'inspiring', 'feel-good', 'positive', 'hopeful'],
+        'shifted_unexpected': ['dark', 'heavy', 'depressing', 'bleak']
+    },
+    
+    # ========================================
+    # 4. GENRE SHIFT (Comedy → Drama)
+    # ========================================
+    {
+        'id': 'temp_04',
+        'baseline_query': "I'm a big fan of comedies",
+        'shifted_query': "I'm a big fan of comedies but feeling like drama this time",
+        'expected_shift': 'comedy → drama',
+        'temporal_marker': 'this time',
+        'baseline_expected': ['comedy', 'funny', 'humorous', 'laugh'],
+        'shifted_expected': ['drama', 'dramatic', 'emotional', 'serious'],
+        'shifted_unexpected': ['comedy', 'funny', 'humorous', 'laugh']
+    },
+    
+    # ========================================
+    # 5. COMPLEXITY SHIFT (Complex → Simple)
+    # ========================================
+    {
+        'id': 'temp_05',
+        'baseline_query': "I enjoy complex sci-fi movies",
+        'shifted_query': "I enjoy complex sci-fi movies but want something simple at the moment",
+        'expected_shift': 'complex → simple',
+        'temporal_marker': 'at the moment',
+        'baseline_expected': ['complex', 'cerebral', 'thought-provoking', 'intricate'],
+        'shifted_expected': ['simple', 'straightforward', 'easy', 'uncomplicated'],
+        'shifted_unexpected': ['complex', 'cerebral', 'confusing', 'complicated']
+    },
+    
+    # ========================================
+    # 6. GENRE SHIFT (Thriller → Documentary)
+    # ========================================
+    {
+        'id': 'temp_06',
+        'baseline_query': "I usually watch thrillers",
+        'shifted_query': "I usually watch thrillers but curious about documentaries today",
+        'expected_shift': 'thriller → documentary',
+        'temporal_marker': 'today',
+        'baseline_expected': ['thriller', 'suspense', 'mystery', 'tension'],
+        'shifted_expected': ['documentary', 'factual', 'non-fiction', 'real'],
+        'shifted_unexpected': ['thriller', 'suspense', 'fiction', 'mystery']
+    },
+    
+    # ========================================
+    # 7. MOOD SHIFT (Serious → Fun)
+    # ========================================
+    {
+        'id': 'temp_07',
+        'baseline_query': "I like serious war films",
+        'shifted_query': "I like serious war films but want something fun for tonight",
+        'expected_shift': 'serious → fun',
+        'temporal_marker': 'for tonight',
+        'baseline_expected': ['war', 'serious', 'historical', 'battle'],
+        'shifted_expected': ['fun', 'entertaining', 'lighthearted', 'enjoyable'],
+        'shifted_unexpected': ['war', 'serious', 'heavy', 'grim']
+    },
+    
+    # ========================================
+    # 8. PACING SHIFT (Slow → Fast)
+    # ========================================
+    {
+        'id': 'temp_08',
+        'baseline_query': "I appreciate slow-burn character studies",
+        'shifted_query': "I appreciate slow-burn character studies but need fast-paced right now",
+        'expected_shift': 'slow → fast-paced',
+        'temporal_marker': 'right now',
+        'baseline_expected': ['slow', 'character study', 'contemplative', 'gradual'],
+        'shifted_expected': ['fast-paced', 'quick', 'energetic', 'action-packed'],
+        'shifted_unexpected': ['slow', 'slow-burn', 'contemplative', 'gradual']
+    },
+    
+    # ========================================
+    # 9. GENRE SHIFT (Animation → Live-Action)
+    # ========================================
+    {
+        'id': 'temp_09',
+        'baseline_query': "I'm into animated films",
+        'shifted_query': "I'm into animated films but want live-action this evening",
+        'expected_shift': 'animated → live-action',
+        'temporal_marker': 'this evening',
+        'baseline_expected': ['animated', 'animation', 'cartoon'],
+        'shifted_expected': ['live-action', 'realistic', 'actors'],
+        'shifted_unexpected': ['animated', 'animation', 'cartoon']
+    },
+    
+    # ========================================
+    # 10. ERA SHIFT (Classic → Modern)
+    # ========================================
+    {
+        'id': 'temp_10',
+        'baseline_query': "I love classic black-and-white films",
+        'shifted_query': "I love classic black-and-white films but want something modern today",
+        'expected_shift': 'classic → modern',
+        'temporal_marker': 'today',
+        'baseline_expected': ['classic', 'old', 'vintage', 'black-and-white'],
+        'shifted_expected': ['modern', 'recent', 'contemporary', 'new'],
+        'shifted_unexpected': ['classic', 'old', 'vintage', 'black-and-white']
+    },
+]
+
+
+
+'''
+""" OLDER  """
+
+temporal_shift_queries = [
+    {
+        'baseline_query': "I like horror movies",
+        'shifted_query': "I like horror movies but want something romantic today",
+        'expected_shift': 'horror → romantic',
+        'temporal_marker': 'today',
+        'baseline_expected': ['horror', 'scary', 'thriller'],
+        'shifted_expected': ['romantic', 'romance', 'love story'],
+        'shifted_unexpected': ['horror', 'scary', 'thriller']
+    },
+    {
+        'baseline_query': "I enjoy action films",
+        'shifted_query': "I enjoy action films but need comedy right now",
+        'expected_shift': 'action → comedy',
+        'temporal_marker': 'right now',
+        'baseline_expected': ['action', 'explosive', 'intense'],
+        'shifted_expected': ['comedy', 'funny', 'humorous'],
+        'shifted_unexpected': ['action', 'explosive', 'intense']
+    },
+    {
+        'baseline_query': "I love watching thrillers",
+        'shifted_query': "I love watching thrillers but feeling like drama tonight",
+        'expected_shift': 'thriller → drama',
+        'temporal_marker': 'tonight',
+        'baseline_expected': ['thriller', 'suspense', 'mystery'],
+        'shifted_expected': ['drama', 'emotional', 'character-driven'],
+        'shifted_unexpected': ['thriller', 'suspense', 'mystery']
+    },
+    {
+        'baseline_query': "I'm a big fan of sci-fi",
+        'shifted_query': "I'm a big fan of sci-fi but want documentary this time",
+        'expected_shift': 'sci-fi → documentary',
+        'temporal_marker': 'this time',
+        'baseline_expected': ['sci-fi', 'science fiction', 'futuristic'],
+        'shifted_expected': ['documentary', 'non-fiction', 'real'],
+        'shifted_unexpected': ['sci-fi', 'science fiction', 'futuristic']
+    },
+]
+
+satiation_queries = [
+    {
+        'baseline_query': "I like comedies",
+        'shifted_query': "I've been watching too many comedies lately, need something different",
+        'expected_shift': 'comedy → NOT comedy',
+        'satiation_marker': 'too many',
+        'baseline_expected': ['comedy', 'funny', 'humorous'],
+        'shifted_expected': ['drama', 'thriller', 'documentary', 'action'],
+        'shifted_unexpected': ['comedy', 'funny', 'humorous']
+    },
+    {
+        'baseline_query': "I enjoy superhero movies",
+        'shifted_query': "I've watched enough superhero movies, want something else",
+        'expected_shift': 'superhero → NOT superhero',
+        'satiation_marker': 'enough',
+        'baseline_expected': ['superhero', 'marvel', 'comic'],
+        'shifted_expected': ['drama', 'romance', 'thriller', 'documentary'],
+        'shifted_unexpected': ['superhero', 'marvel', 'comic', 'action']
+    },
+    {
+        'baseline_query': "I like intense thrillers",
+        'shifted_query': "I'm tired of intense movies, need something light",
+        'expected_shift': 'intense → light',
+        'satiation_marker': 'tired of',
+        'baseline_expected': ['thriller', 'intense', 'suspense'],
+        'shifted_expected': ['light', 'feel-good', 'comedy', 'uplifting'],
+        'shifted_unexpected': ['thriller', 'intense', 'suspense', 'dark']
+    },
+]
+
+mood_context_queries = [
+    {
+        'baseline_query': "I like intense psychological thrillers",
+        'shifted_query': "I had a stressful day, need something to relax",
+        'expected_shift': 'intense → relaxing',
+        'context_marker': 'stressful day / relax',
+        'baseline_expected': ['thriller', 'psychological', 'intense'],
+        'shifted_expected': ['calm', 'feel-good', 'light', 'comedy'],
+        'shifted_unexpected': ['intense', 'psychological', 'dark', 'disturbing']
+    },
+    {
+        'baseline_query': "I enjoy dark dramas",
+        'shifted_query': "I'm in a great mood, want something uplifting",
+        'expected_shift': 'dark → uplifting',
+        'context_marker': 'great mood / uplifting',
+        'baseline_expected': ['dark', 'heavy', 'serious'],
+        'shifted_expected': ['uplifting', 'feel-good', 'positive', 'inspiring'],
+        'shifted_unexpected': ['dark', 'heavy', 'depressing']
+    },
+    {
+        'baseline_query': "I like cerebral films",
+        'shifted_query': "I'm exhausted, just want something easy to watch",
+        'expected_shift': 'cerebral → easy',
+        'context_marker': 'exhausted / easy',
+        'baseline_expected': ['cerebral', 'complex', 'thought-provoking'],
+        'shifted_expected': ['easy', 'light', 'simple', 'entertaining'],
+        'shifted_unexpected': ['cerebral', 'complex', 'thought-provoking']
+    },
+]
+
+multi_turn_queries = [
+    {
+        'turn_1': "I like romantic comedies",
+        'turn_2': "But something more serious this time",
+        'expected_shift': 'romantic comedy → romantic drama',
+        'override_marker': 'but...this time',
+        'turn_1_expected': ['romantic comedy', 'rom-com', 'funny'],
+        'turn_2_expected': ['romantic drama', 'serious', 'emotional'],
+        'turn_2_unexpected': ['comedy', 'funny', 'humorous']
+    },
+    {
+        'turn_1': "Do you have any good thrillers?",
+        'turn_2': "Actually, I changed my mind, let's do documentaries instead",
+        'expected_shift': 'thriller → documentary',
+        'override_marker': 'changed my mind / instead',
+        'turn_1_expected': ['thriller', 'suspense', 'mystery'],
+        'turn_2_expected': ['documentary', 'non-fiction', 'factual'],
+        'turn_2_unexpected': ['thriller', 'suspense', 'fiction']
+    },
+    {
+        'turn_1': "I want to watch something scary",
+        'turn_2': "Wait, no, I meant something fun and lighthearted",
+        'expected_shift': 'scary → lighthearted',
+        'override_marker': 'wait, no / I meant',
+        'turn_1_expected': ['scary', 'horror', 'frightening'],
+        'turn_2_expected': ['fun', 'lighthearted', 'feel-good', 'uplifting'],
+        'turn_2_unexpected': ['scary', 'horror', 'dark']
+    },
+]
+
+audience_context_queries = [
+    {
+        'baseline_query': "I like violent action movies",
+        'shifted_query': "I'm watching with my 8-year-old, need family-friendly options",
+        'expected_shift': 'violent action → family-friendly',
+        'context_marker': '8-year-old / family-friendly',
+        'baseline_expected': ['action', 'violent', 'intense'],
+        'shifted_expected': ['family-friendly', 'kids', 'appropriate', 'G-rated'],
+        'shifted_unexpected': ['violent', 'mature', 'R-rated', 'graphic']
+    },
+    {
+        'baseline_query': "I enjoy complex art films",
+        'shifted_query': "Having friends over for movie night, need crowd-pleasers",
+        'expected_shift': 'art film → crowd-pleaser',
+        'context_marker': 'friends over / crowd-pleasers',
+        'baseline_expected': ['art film', 'complex', 'arthouse'],
+        'shifted_expected': ['crowd-pleaser', 'popular', 'entertaining', 'blockbuster'],
+        'shifted_unexpected': ['complex', 'arthouse', 'slow', 'cerebral']
+    },
+    {
+        'baseline_query': "I like watching dark psychological thrillers",
+        'shifted_query': "It's date night, want something romantic",
+        'expected_shift': 'dark thriller → romantic',
+        'context_marker': 'date night / romantic',
+        'baseline_expected': ['dark', 'psychological', 'thriller'],
+        'shifted_expected': ['romantic', 'date night', 'love story'],
+        'shifted_unexpected': ['dark', 'disturbing', 'psychological']
+    },
+]
+'''

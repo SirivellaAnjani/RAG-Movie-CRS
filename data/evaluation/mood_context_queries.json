@@ -1,0 +1,141 @@
+mood_context_queries = [
+    # ========================================
+    # 1. STRESS → RELAXATION
+    # ========================================
+    {
+        'id': 'mood_01',
+        'baseline_query': "I like intense psychological thrillers",
+        'shifted_query': "I had a really stressful day at work, need something to unwind",
+        'expected_shift': 'intense → relaxing',
+        'context_marker': 'stressful day / unwind',
+        'baseline_expected': ['thriller', 'intense', 'psychological', 'tense'],
+        'shifted_expected': ['relaxing', 'calm', 'soothing', 'peaceful', 'feel-good'],
+        'shifted_unexpected': ['intense', 'stressful', 'tense', 'disturbing', 'dark']
+    },
+    
+    # ========================================
+    # 2. SADNESS → UPLIFTING
+    # ========================================
+    {
+        'id': 'mood_02',
+        'baseline_query': "I enjoy dark dramas",
+        'shifted_query': "I'm feeling a bit down, need something to cheer me up",
+        'expected_shift': 'dark → uplifting',
+        'context_marker': 'feeling down / cheer up',
+        'baseline_expected': ['dark', 'drama', 'heavy', 'serious'],
+        'shifted_expected': ['uplifting', 'cheerful', 'happy', 'positive', 'inspiring'],
+        'shifted_unexpected': ['dark', 'sad', 'depressing', 'tragic']
+    },
+    
+    # ========================================
+    # 3. ENERGY LOW → LIGHT CONTENT
+    # ========================================
+    {
+        'id': 'mood_03',
+        'baseline_query': "I like cerebral sci-fi",
+        'shifted_query': "I'm exhausted and just want something easy to watch before bed",
+        'expected_shift': 'cerebral → easy',
+        'context_marker': 'exhausted / easy / before bed',
+        'baseline_expected': ['cerebral', 'complex', 'sci-fi', 'thought-provoking'],
+        'shifted_expected': ['easy', 'light', 'simple', 'gentle', 'relaxing'],
+        'shifted_unexpected': ['cerebral', 'complex', 'thought-provoking', 'intense']
+    },
+    
+    # ========================================
+    # 4. HAPPY MOOD → FUN CONTENT
+    # ========================================
+    {
+        'id': 'mood_04',
+        'baseline_query': "I appreciate serious political dramas",
+        'shifted_query': "I'm in such a great mood today, want something fun and entertaining",
+        'expected_shift': 'serious → fun',
+        'context_marker': 'great mood / fun',
+        'baseline_expected': ['political', 'serious', 'drama', 'heavy'],
+        'shifted_expected': ['fun', 'entertaining', 'enjoyable', 'upbeat', 'lively'],
+        'shifted_unexpected': ['serious', 'heavy', 'political', 'dark']
+    },
+    
+    # ========================================
+    # 5. LONELY → COMFORTING
+    # ========================================
+    {
+        'id': 'mood_05',
+        'baseline_query': "I watch a lot of crime thrillers",
+        'shifted_query': "I'm home alone and feeling lonely, want something comforting",
+        'expected_shift': 'thriller → comforting',
+        'context_marker': 'lonely / comforting',
+        'baseline_expected': ['crime', 'thriller', 'mystery', 'suspense'],
+        'shifted_expected': ['comforting', 'warm', 'heartwarming', 'cozy', 'feel-good'],
+        'shifted_unexpected': ['thriller', 'crime', 'dark', 'suspenseful', 'scary']
+    },
+    
+    # ========================================
+    # 6. BORED → EXCITING
+    # ========================================
+    {
+        'id': 'mood_06',
+        'baseline_query': "I usually watch slow documentaries",
+        'shifted_query': "I'm so bored, need something exciting and engaging",
+        'expected_shift': 'slow → exciting',
+        'context_marker': 'bored / exciting',
+        'baseline_expected': ['documentary', 'slow', 'educational', 'factual'],
+        'shifted_expected': ['exciting', 'thrilling', 'engaging', 'gripping', 'fast-paced'],
+        'shifted_unexpected': ['slow', 'boring', 'documentary', 'dull']
+    },
+    
+    # ========================================
+    # 7. ANXIOUS → PREDICTABLE
+    # ========================================
+    {
+        'id': 'mood_07',
+        'baseline_query': "I love unpredictable plot twists",
+        'shifted_query': "I'm feeling anxious, want something predictable and safe",
+        'expected_shift': 'unpredictable → predictable',
+        'context_marker': 'anxious / predictable / safe',
+        'baseline_expected': ['twist', 'unpredictable', 'surprising', 'shocking'],
+        'shifted_expected': ['predictable', 'safe', 'familiar', 'comforting', 'simple'],
+        'shifted_unexpected': ['unpredictable', 'twist', 'shocking', 'anxiety']
+    },
+    
+    # ========================================
+    # 8. MOTIVATED → INSPIRATIONAL
+    # ========================================
+    {
+        'id': 'mood_08',
+        'baseline_query': "I enjoy dystopian films",
+        'shifted_query': "I want to feel motivated, need something inspirational",
+        'expected_shift': 'dystopian → inspirational',
+        'context_marker': 'motivated / inspirational',
+        'baseline_expected': ['dystopian', 'bleak', 'dark future', 'apocalyptic'],
+        'shifted_expected': ['inspirational', 'motivational', 'uplifting', 'triumphant', 'hopeful'],
+        'shifted_unexpected': ['dystopian', 'bleak', 'dark', 'depressing']
+    },
+    
+    # ========================================
+    # 9. RAINY DAY → COZY
+    # ========================================
+    {
+        'id': 'mood_09',
+        'baseline_query': "I like epic adventure movies",
+        'shifted_query': "It's a rainy Sunday afternoon, want something cozy to curl up with",
+        'expected_shift': 'epic → cozy',
+        'context_marker': 'rainy / cozy / curl up',
+        'baseline_expected': ['adventure', 'epic', 'grand', 'sweeping'],
+        'shifted_expected': ['cozy', 'intimate', 'warm', 'comforting', 'gentle'],
+        'shifted_unexpected': ['epic', 'adventure', 'grand', 'intense']
+    },
+    
+    # ========================================
+    # 10. NOSTALGIC → CHILDHOOD
+    # ========================================
+    {
+        'id': 'mood_10',
+        'baseline_query': "I watch modern blockbusters",
+        'shifted_query': "I'm feeling nostalgic, want something that reminds me of childhood",
+        'expected_shift': 'modern → nostalgic/childhood',
+        'context_marker': 'nostalgic / childhood',
+        'baseline_expected': ['modern', 'blockbuster', 'recent', 'new'],
+        'shifted_expected': ['nostalgic', 'childhood', 'classic', 'vintage', 'family'],
+        'shifted_unexpected': ['modern', 'recent', 'new', 'blockbuster']
+    },
+]
