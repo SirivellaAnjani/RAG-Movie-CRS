@@ -10,3 +10,6 @@ I implemented the following models:
 * LLM + RAG + NCF
 * LLM + RAG + Transformer
 
+Set Up: 
+Download Ollama 
+Pull Llama3.2:1B 
