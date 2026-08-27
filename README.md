@@ -9,9 +9,3 @@ I implemented the following models:
 * LLM + RAG + RGCN
 * LLM + RAG + NCF
 * LLM + RAG + Transformer
-
-
-
-Project overview
-
-Setup instructions
